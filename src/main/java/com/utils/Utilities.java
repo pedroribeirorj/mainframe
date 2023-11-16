@@ -29,7 +29,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class Utilities {
 
 	private static Date mv_sceneTime;
-	public static final String SHEET_FULL_PATH = "C:/QM_NTX/INGENIUM/testExcelData.xlsx";
+	
 	public static String PathSave = new File(".xpto").getAbsolutePath().replaceAll(".xpto", "").replace("\\", "\\\\");
 	private static String path = "C:/QM_NTX/INGENIUM/EVIDENCIAS/";
 	public static int NUM_FILE = 1;
@@ -58,37 +58,7 @@ public class Utilities {
 		return new String(decoded);
 	}
 
-	public static void save(String msg, long duration) throws Exception {
-		int row = ExcelReader.caseRow;
-		int rightRow = setRightLine();
-		if (rightRow == -1)
-			throw new Exception("A coluna do caso de teste não foi encontrada na planilha");
-		msg = (msg == null) ? "" : msg;
-		String result = msg.trim().isEmpty() ? "Passed" : "Failed";
-		Utilities.save(rightRow, result, msg, duration);
-
-		ExcelReader.caseRow = row;
-	}
-
-	private static int setRightLine() {
-		ExcelReaderController erc = new ExcelReaderController(ExcelReaderController.TAB_RESULTS);
-		int column = erc.getColumn(ExcelReader.FIELD_TEST_CASE);
-		int rightRow = 1;
-		String sheetTestCase = ".";
-		String testCase = CT_FILENAME.split("//")[1];
-		while (!sheetTestCase.isEmpty()) {
-			sheetTestCase = erc.read(rightRow, column).trim();
-			sheetTestCase = sheetTestCase == null ? "" : sheetTestCase;
-			if (sheetTestCase.equalsIgnoreCase(testCase)) {
-				erc.close();
-				return rightRow;
-			} else
-				rightRow++;
-		}
-		erc.close();
-		return -1;
-	}
-
+	
 	public static Data strtoData(String jsonData) throws JsonMappingException, JsonProcessingException {
 		ObjectMapper mapper = new ObjectMapper();
 		return mapper.readValue(jsonData, Data.class);
@@ -111,16 +81,6 @@ public class Utilities {
 //		erc.save();
 //		erc.close();
 //	}
-
-	public static void save(int row, String result, String msg, long duration)
-			throws IOException, InterruptedException {
-		ExcelReaderController erc = new ExcelReaderController(ExcelReaderController.TAB_RESULTS);
-		erc.writeData(row, ExcelReader.FIELD_FINAL_RESULT, result);
-		erc.writeData(row, ExcelReader.FIELD_DURATION, duration + "");
-		erc.writeData(row, ExcelReader.FIELD_ERROR, msg);
-		erc.save();
-		erc.close();
-	}
 
 	public static String cf_getDiffTime(Date cv_date1, Date cv_date2) {
 		if (cv_date2.getTime() - cv_date1.getTime() < 0) {

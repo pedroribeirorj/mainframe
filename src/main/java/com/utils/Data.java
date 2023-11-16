@@ -17,9 +17,11 @@ public class Data {
 	private String client;
 	private String uwde_stb2;
 	private String uwde_r;
+	private String testcase;
+	private String run;
 
-	public Data(boolean auth)  {
-		if(auth)
+	public Data(boolean auth) {
+		if (auth)
 			AuthIO.login();
 		username = Connection.USER_AS400;
 		usernameIngenium = Connection.USER_INGENIUM;
@@ -27,7 +29,23 @@ public class Data {
 		password = Connection.getAs400Encodedpassword();
 		companyIngenium = Connection.getIngeniumCompany();
 	}
-	
+
+	public String getRun() {
+		return run;
+	}
+
+	public void setRun(String run) {
+		this.run = run;
+	}
+
+	public void setTestcase(String testcase) {
+		this.testcase = testcase;
+	}
+
+	public String getTestcase() {
+		return testcase;
+	}
+
 	public String getUwde_stb2() {
 		return uwde_stb2;
 	}
@@ -37,14 +55,14 @@ public class Data {
 	}
 
 	public void setUwde_r(String uwde_r) {
-		if(uwde_r == null)
+		if (uwde_r == null)
 			this.uwde_r = "";
 		else
 			this.uwde_r = uwde_r;
 	}
 
 	public void setUwde_stb2(String uwde_stb2) {
-		if(uwde_stb2 == null)
+		if (uwde_stb2 == null)
 			this.uwde_stb2 = "";
 		else
 			this.uwde_stb2 = uwde_stb2;

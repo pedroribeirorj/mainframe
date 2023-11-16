@@ -19,8 +19,8 @@ import org.apache.log4j.Logger;
 import com.controller.ExcelReaderController;
 import com.jagacy.util.JagacyException;
 import com.model.UWDETable;
+import com.sheet.ExcelReader;
 import com.utils.Data;
-import com.utils.ExcelReader;
 
 public class Rules {
 	public static int RULE_MQC_NAO_TEMP_PREF = 1;

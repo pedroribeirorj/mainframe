@@ -1,5 +1,6 @@
 package com.model;
 
+import java.awt.Toolkit;
 import java.io.File;
 
 import javax.swing.ImageIcon;
@@ -26,6 +27,7 @@ public class AuthIO extends JDialog {
 		JPasswordField password = new JPasswordField();
 		ImageIcon icon = new ImageIcon(System.getProperty("user.dir") + "/src/main/resources/img/sulamericaLogo.png");
 		Object[] array = { icon, label_login, login, label_password, password };
+		Toolkit.getDefaultToolkit().getScreenSize();
 		int res = JOptionPane.showConfirmDialog(null, array, "Login Ingenium", JOptionPane.OK_CANCEL_OPTION,
 				JOptionPane.PLAIN_MESSAGE);
 		if (res == JOptionPane.OK_OPTION) {
