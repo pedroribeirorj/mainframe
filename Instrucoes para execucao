@@ -1,0 +1,16 @@
+Ao executar como JUnit, utilize as configurações abaixo:
+
+    Class: junitTest.junit.TestExcelDataLoader
+    TestRunner: JUnit5
+    Arguments / VM arguments:
+    -ea
+    --add-exports java.base/sun.net.www.protocol.jar=ALL-UNNAMED
+    JRE : JavaSE-9
+
+Ao executar como JavaApplication, utilize as configurações abaixo:
+
+    Class: junitTest.junit.JARExecution
+    Arguments / VM arguments:
+    -ea
+    --add-exports java.base/sun.net.www.protocol.jar=ALL-UNNAMED
+    JRE : JavaSE-9

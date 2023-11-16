@@ -1,0 +1,1 @@
+java -jar jagacy3270.jar
